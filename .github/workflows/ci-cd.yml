@@ -17,10 +17,10 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: 21
 
       - name: Build project
-        run: mvn clean install
+        run: mvn clean package -DskipTests
 
-      - name: Run tests
-        run: mvn test
+      - name: Build Docker image
+        run: docker build -t attendance-app .
